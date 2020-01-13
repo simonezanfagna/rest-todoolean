@@ -21,7 +21,14 @@
     </main>
 
     <script id="entry-template" type="text/x-handlebars-template">
-      <li data-todoId="{{ todoId }}"><i class="fas fa-trash-alt"></i>{{ elemento }}</li>
+      <li data-todoId="{{ todoId }}">
+        <i class="fas fa-trash-alt"></i>
+        <i class="fas fa-edit"></i>
+        <i class="fas fa-save"></i>
+        <span>{{ elemento }}</span>
+        <input class="modificaElemento" type="text" value="{{ elemento }}">
+      </li>
+
     </script>
 
   </body>

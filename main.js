@@ -13,7 +13,6 @@ $(document).ready(function () {
           'text' : $('.inserisciElemento').val()
         },
         'success' : function () {
-          $('#container-elementi').empty();
           stampaDatiTodo();
           $('.inserisciElemento').val('');
         },
@@ -35,7 +34,6 @@ $(document).ready(function () {
       'url' : 'http://157.230.17.132:3025/todos/' + id_todo,
       'method' : 'DELETE',
       'success' : function () {
-        $('#container-elementi').empty();
         stampaDatiTodo();
       },
       'error' : function () {
@@ -44,11 +42,47 @@ $(document).ready(function () {
     })
   })
 
+  $(document).on('click', '.fa-edit', function () {
+
+    $(this).addClass('nascondi');
+    $(this).siblings('.fa-save').addClass('mostra');
+    $(this).siblings('span').addClass('nascondi');
+    $(this).siblings('.modificaElemento').addClass('mostra');
+
+  })
+
+  $(document).on('click', '.fa-save', function () {
+    var id_todo = $(this).parent().attr('data-todoId');
+    var valInput = $(this).siblings('.modificaElemento').val().trim();
+    if (valInput.length > 0) {
+      $.ajax({
+        'url' : 'http://157.230.17.132:3025/todos/' + id_todo,
+        'method' : 'PUT',
+        'data' : {
+          'text' : valInput
+        },
+        'success' : function (data) {
+          stampaDatiTodo()
+        },
+        'error' : function () {
+          alert('errore')
+        }
+      })
+    }
+    else {
+      stampaDatiTodo()
+    }
+
+
+  })
+
   function stampaDatiTodo() {
+
     $.ajax({
       'url' : 'http://157.230.17.132:3025/todos/',
       'method' : 'GET',
       'success' : function (data) {
+        $('#container-elementi').empty();
         for (var i = 0; i < data.length; i++) {
           var context = {
             elemento : data[i].text,

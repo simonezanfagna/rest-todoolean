@@ -20,3 +20,39 @@ i, button{
 i{
   margin-right: 5px;
 }
+
+.fa-edit{
+  display: inline-block;
+}
+
+.fa-edit.nascondi{
+  display: none;
+}
+
+.fa-save{
+  display: none;
+}
+
+.fa-save.mostra{
+  display: inline-block;
+}
+
+.modificaElemento{
+  display: none;
+}
+
+.modificaElemento.mostra{
+  display: inline-block;
+}
+
+.fa-save{
+  display: none;
+}
+
+span{
+  display: inline-block;
+}
+
+span.nascondi{
+  display: none;
+}
