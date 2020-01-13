@@ -13,13 +13,15 @@
   <body>
 
     <main>
-      <ul>
-        
+      <input class="inserisciElemento" type="text" value="" placeholder="Inserisci un nuovo elemento">
+      <button class="bottoneInserisci" type="button">Inserisci</button>
+      <ul id="container-elementi">
+
       </ul>
     </main>
 
     <script id="entry-template" type="text/x-handlebars-template">
-      <li data-calendario="{{data}}">{{giorno}}</li>
+      <li data-todoId="{{ todoId }}"><i class="fas fa-trash-alt"></i>{{ elemento }}</li>
     </script>
 
   </body>
